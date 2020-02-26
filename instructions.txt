@@ -1,0 +1,84 @@
+
+
+
+STACSYAK APIStacsYak has a number of API endpoints, all of which are 
+documented in the online documentation. Eachendpoint returns HTTP status 
+codes that should be dealt with appropriately, for example, 403 errors 
+might belogged to the console or displayed to the user in some way.
+
+The API root can be found at 
+https://cs5003-api.host.cs.st-andrews.ac.uk/api, and the API documentation 
+canbe found at https://cs5003-api.host.cs.st-andrews.ac.uk/. 
+You can use the API documentation to test out theAPI, but you must 
+input your user id using the authorise button in the top right for this 
+to work.
+
+There are several API endpoint that can be used, such as up voting and 
+down voting, but the following twoabove are essential to meet the basic 
+requirements of this assignment:
+
+GET /yaks – this returns a list of all the Yaks posted in the last 2 days. 
+The Yaks are returned as aJSON array containing objects. Each object has the 
+following fields:
+
+    id – a unique id for the Yak.
+    content – the text that was submitted for the Yak.
+    userNick – the nickname of the user that posted the Yak 
+        (this is optional and will only be there if the nickname has 
+        been set by the user).
+    votes – the total number of votes that the Yak has.
+    userVote – tell you if your user (the one used to authorise) has voted on 
+        the Yak and how theyvoted.
+    timestamp – a time stamp telling you when the Yak was posted.
+
+POST /yaks – this allows you to post a single new Yak up to the server. 
+If successful, along with thestatus code 200,the server will return a 
+JSON object containing the key “status” with the value “ok”.
+The request to post a yak must have:
+
+    Content-Type header set to “application/json” because we are posting JSON 
+        to the server.
+    Body containing a JSON object with a single property called “content” 
+        containing the text youwant to post.
+
+AUTHORISATION
+
+StacsYak can only be used by users who have been issued a user id. 
+Because of this, every request that youmake to the API must provide a URL 
+query parameter, called key, with the StacsYak user id that you weresent via email. 
+
+For example, if we were calling the GET /yaks endpoint and our user id was “test123”,
+the full URL would look like this:
+
+//my personal key: 59d136b8-5233-4957-bb79-37b3690e5c8c
+https://cs5003-api.host.cs.st-andrews.ac.uk/api/yaks?key=59d136b8-5233-4957-bb79-37b3690e5c8c
+
+REQUIREMENTS
+
+Your application should provide the functionality described below. 
+You must make sure you have completedall the requirements in each section 
+before moving onto the next.
+
+BASIC
+
+Your application should provide the following:
+    Allow users to see all the Yaks that are currently available from the server, 
+        including content, id andvotes for each.
+    Allow users to post Yaks. After successfully posting a Yak, re-display 
+        the updated list of Yaks from theserver without reloading the page.
+    Allow users to delete Yaks they have created. After successfully deleting a Yak, 
+        re-display the updatedlist of Yaks from the server without reloading the page.
+    Allow users vote Yaks up and down. After successfully up/down voting a Yak, 
+        re-display the updatedlist of Yaks from the server without reloading the page.
+    Allow users change their nickname. After successfully changing the nickname, 
+        display it in theinterface without reloading the page
+
+INTERMEDIATE
+
+Your application should provide all the requirements described in Section Basic, 
+plus the following:
+    
+    Allow users to filter the current Yaks based on nick name.
+    Allow users to filter the current Yaks based on hashtags in the content.
+    Allow users to sort the current Yaks based on the number of votes.
+    Allow users to sort the current Yaks based on the timestamp

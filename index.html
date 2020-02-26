@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title of the document</title>
+
+    <script src= "StacksYak.js">
+    </script>
+</head>
+
+<body>
+    <H1>Yaks for everyone!</H1>
+
+    Hello: <p id=usrname></p> 
+    <form>
+
+    <br><marquee><a href="https://media.makeameme.org/created/ow-you-shot.jpg">shoot me</marquee><br>
+        <label for="lblName">NickName:</label> 
+        <input id="nickName" name="fname" type="text" />
+        <br><br>
+        <button type="button" id='newNick' onclick="setNickname()">Nickname</button>
+        <br><br>
+        <label for="lblMessage">Message:</label> 
+        <input id="thisMessage" name="fname" type="text" />
+        <br><br>
+        <button type="button" id='NewYak' onclick="postYak()">New Yak</button>
+      </form>
+    
+    <br><br>
+    <div id="table_library"></div>
+</body>
+
+</html>
